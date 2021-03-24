@@ -36,7 +36,7 @@ public class DemoController  {
 
     // SpringMVC的异常处理机制（异常处理器）
     // 注意：写在这里只会对当前controller类生效
-   /* @ExceptionHandler(ArithmeticException.class)
+    @ExceptionHandler(ArithmeticException.class)
     public void handleException(ArithmeticException exception,HttpServletResponse response) {
         // 异常处理逻辑
         try {
@@ -44,7 +44,7 @@ public class DemoController  {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
 
 
@@ -212,10 +212,11 @@ public class DemoController  {
      * @return
      */
     @RequestMapping("/handle06")
-    public ModelAndView handle06(Date birthday) {
+    public ModelAndView handle06(Date birthday,@ModelAttribute("loginUserInfo") String user) {
         Date date = new Date();ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("date",date);
         modelAndView.setViewName("success");
+        System.err.println(user);
         return modelAndView;
     }
 
